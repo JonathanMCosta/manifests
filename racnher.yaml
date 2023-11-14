@@ -51,11 +51,10 @@ metadata:
     cattle.io/creator: "norman"
     app.kubernetes.io/instance: "aws-vpc-cni"
     app.kubernetes.io/managed-by: "Helm"
-    app.kubernetes.io/name: "aws-node"
+    app.kubernetes.io/name: "cattle"
     app.kubernetes.io/version: "v1.15.3"
     helm.sh/chart: "aws-vpc-cni-1.15.3"
-    k8s-app: "aws-node"
-
+    k8s-app: "cattle"
 subjects:
 - kind: ServiceAccount
   name: cattle
