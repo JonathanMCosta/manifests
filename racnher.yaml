@@ -49,12 +49,6 @@ metadata:
   namespace: cattle-system
   labels:
     cattle.io/creator: "norman"
-    app.kubernetes.io/instance: "aws-vpc-cni"
-    app.kubernetes.io/managed-by: "Helm"
-    app.kubernetes.io/name: "cattle"
-    app.kubernetes.io/version: "v1.15.3"
-    helm.sh/chart: "aws-vpc-cni-1.15.3"
-    k8s-app: "cattle"
 subjects:
 - kind: ServiceAccount
   name: cattle
@@ -63,19 +57,18 @@ roleRef:
   kind: ClusterRole
   name: cattle-admin
   apiGroup: rbac.authorization.k8s.io
-  
 
 ---
 
 apiVersion: v1
 kind: Secret
 metadata:
-  name: cattle-credentials-b853933
+  name: cattle-credentials-21b112b
   namespace: cattle-system
 type: Opaque
 data:
   url: "aHR0cHM6Ly9lYzItNTItNTgtMjI3LTI1NC5ldS1jZW50cmFsLTEuY29tcHV0ZS5hbWF6b25hd3MuY29t"
-  token: "OWN6cGtnYnNmaHh0YjQ5OHNrYm5qbWNkcDJ2Yms2NnA5bHZ4aG43a2ZmY3RzMndjOGNnbW1x"
+  token: "d25yNjZkcjJkNjJkOTR3djlibnE2bWQ1eG00bWI3cXFrNnBtZDJzdGpyajc0MjdkaDJsbHhw"
   namespace: ""
 
 ---
@@ -150,7 +143,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: kubernetes.io/os
+              - key: beta.kubernetes.io/os
                 operator: NotIn
                 values:
                 - windows
@@ -207,7 +200,7 @@ spec:
       volumes:
       - name: cattle-credentials
         secret:
-          secretName: cattle-credentials-b853933
+          secretName: cattle-credentials-21b112b
           defaultMode: 320
   strategy:
     type: RollingUpdate
