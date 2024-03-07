@@ -1,0 +1,23 @@
+version: "3.3"
+
+networks:
+  service-network:
+    driver:
+      bridge
+
+services:
+  api:
+    image: 237622978224.dkr.ecr.eu-central-1.amazonaws.com/gvat-cn-devops-agentcluster:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '6'
+          memory: 10Gi
+    environment:
+      - AZP_POOL=AgentCluster
+      - AZP_TOKEN=blognr55a2uxtwuuepj2d2whwlttb26vcpdzv3z7dethwniso2qq
+      - AZP_URL=https://dev.azure.com/SovosGvatEMEA/
+    ports:
+      - 80:80
+    networks:
+      - service-network
